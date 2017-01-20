@@ -12,7 +12,7 @@ all:
 	go build  -o ${BINARY} backup_ldap.go
 
 clean:
-	rm ${BINARY}
+	rm -f ${BINARY}
 
 tar:
 	mkdir ${BINARY}-${VERSION}

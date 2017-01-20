@@ -45,7 +45,7 @@ systemctl daemon-reload
 %files
 #%doc
 %{_sbindir}/backup_ldap
-/usr/lib/systemd/system/nackup-ldap.service
+/usr/lib/systemd/system/backup-ldap.service
 
 
 %changelog
