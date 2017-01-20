@@ -676,6 +676,9 @@ func main() {
 	}
 
 	var config BackupConfigFile
+	if *debug {
+		log.Printf("using config=%s\n", *configFilename)
+	}
 	source, err := ioutil.ReadFile(*configFilename)
 	if err != nil {
 		log.Printf("Cannot read config file: %s. Err=%s\n", *configFilename, err.Error())
@@ -754,6 +757,8 @@ func main() {
 
 	// common setup
 	ldap.DefaultTimeout = 4 * time.Second
+
+	log.Printf("Initialization complete\n")
 
 	switch parsedArgs {
 	case runtest.FullCommand():

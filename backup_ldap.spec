@@ -1,6 +1,6 @@
 Name:           backup_ldap
-Version:	0.9.1
-Release:	2%{?dist}
+Version:	0.9.2
+Release:	1%{?dist}
 Summary:	Simple 389 ds backup utility
 
 #Group:		
@@ -32,11 +32,9 @@ install -d %{buildroot}/usr/lib/systemd/system
 install -p -m 0644 ./backup-ldap.service %{buildroot}/usr/lib/systemd/system/backup-ldap.service
 
 %post
-chown nobody /%{_bindir}/node_exporter
-chgrp nobody /%{_bindir}/node_exporter
-chmod u+s /%{_bindir}/node_exporter
-mkdir -p /var/lib/node_exporter/textfile_collector/
-chmod 755 /var/lib/node_exporter/textfile_collector/
+chown nobody /%{_sbindir}/backup_ldap
+chgrp nobody /%{_sbindir}/backup_ldap
+chmod u+s /%{_sbindir}/backup_ldap
 systemctl daemon-reload
 
 %postun

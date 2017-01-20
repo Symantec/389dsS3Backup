@@ -1,13 +1,11 @@
 [Unit]
-Description=Prometheus node exporter
-After=network.target
+Description=389 ds backup service
+After=network.target dirsrv.target
 
 [Service]
-User=nobody
-Group=nobody
-ExecStart=/usr/bin/node_exporter --config="/etc/backup_config.yml"   
+ExecStart=/usr/sbin/backup_ldap  --config=/etc/backup_config.yml   backupDaemon 12h
 Restart=always
-RestartSec=20
+RestartSec=200
 
 [Install]
 WantedBy=multi-user.target
