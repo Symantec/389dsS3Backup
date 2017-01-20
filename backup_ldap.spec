@@ -1,0 +1,52 @@
+Name:           backup_ldap
+Version:	0.9.1
+Release:	2%{?dist}
+Summary:	Simple 389 ds backup utility
+
+#Group:		
+License:	ASL 2.0
+URL:		https://github.com/cviecco/backup_ldap/
+Source0:	backup_ldap-%{version}.tar.gz
+
+#BuildRequires:	golang
+#Requires:	
+
+#no debug package as this is go
+%define debug_package %{nil}
+
+%description
+Simple encryption using clound infrastrcture
+
+
+%prep
+%setup -n %{name}-%{version}
+
+%build
+go build -ldflags "-X main.Version=%{version}" backup_ldap.go 
+
+
+%install
+#%make_install
+%{__install} -Dp -m0755 backup_ldap %{buildroot}%{_sbindir}/backup_ldap
+install -d %{buildroot}/usr/lib/systemd/system
+install -p -m 0644 ./backup-ldap.service %{buildroot}/usr/lib/systemd/system/backup-ldap.service
+
+%post
+chown nobody /%{_bindir}/node_exporter
+chgrp nobody /%{_bindir}/node_exporter
+chmod u+s /%{_bindir}/node_exporter
+mkdir -p /var/lib/node_exporter/textfile_collector/
+chmod 755 /var/lib/node_exporter/textfile_collector/
+systemctl daemon-reload
+
+%postun
+systemctl daemon-reload
+
+%files
+#%doc
+%{_sbindir}/backup_ldap
+/usr/lib/systemd/system/nackup-ldap.service
+
+
+%changelog
+
