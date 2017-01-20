@@ -1,0 +1,8 @@
+backup:
+    bind_dn: "uid=admin,ou=Administrators,ou=TopologyManagement,o=NetscapeRoot"
+    #bind_dn: "cn=directory manager"
+    bind_passwd: "superpassword"
+    s3url: "https://$YOUR_BACKUP_BUCKET.s3.amazonaws.com/backup_dev.tar.enc"
+    aws_access_key_id: "DEADBEEFDEADBEEF"
+    aws_secret_access_key: "DEADBEEEF"
+    #http_proxy:            "http://proxy.example.com:8080"

@@ -1,0 +1,13 @@
+[Unit]
+Description=Prometheus node exporter
+After=network.target
+
+[Service]
+User=nobody
+Group=nobody
+ExecStart=/usr/bin/node_exporter --config="/etc/backup_config.yml"   
+Restart=always
+RestartSec=20
+
+[Install]
+WantedBy=multi-user.target
