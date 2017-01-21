@@ -7,8 +7,8 @@ bucket.
 2. go get ./...
 
 ## Build
-Stanard make:
-make
+Standard make:
+> make
 
 ### make rpm
 1. make tar
@@ -20,8 +20,13 @@ make
   * Single backup: backup\_ldap singleBackup
   * Restore:  backup\_ldap singleBackup
 
-You can aske for help by:  backup\_ldap --help
 
+Other stuff:
+* You can ask for help by:  backup\_ldap --help
+* The default location for the configuration file is './backup\_config.yml' (can be overriden by command line)
+* you can opt-out of putting some sensitive credentials in the config file and
+  pass them as environment variables.
+* The admin 389 ds password required to to backup will be asked in the command line. 
 
 
 
