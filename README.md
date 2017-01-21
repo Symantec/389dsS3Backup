@@ -3,18 +3,19 @@ Tool to backup/restore  389ds servers into an encrypted file within an aws
 bucket.
 
 ## Requirements
- Golang > 1.7
- go get ./...
+1. Golang > 1.7
+2. go get ./...
 
 ## Build
+Stanard make:
 make
 
 ### make rpm
-make tar
-rpmbuild -ta $tarball
+1. make tar
+2. rpmbuild -ta $tarball
 
 ## running
-1. make your own config file [a relative link](example_backup_config.yml) 
+1. make your own config file [backup\_config.yml](example_backup_config.yml) 
 2. Run the command:
   * Single backup: backup\_ldap singleBackup
   * Restore:  backup\_ldap singleBackup
