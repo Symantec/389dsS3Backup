@@ -9,6 +9,7 @@ VERSION=0.9.2
 #LDFLAGS=-ldflags "-X github.com/ariejan/roll/core.Version=${VERSION} -X github.com/ariejan/roll/core.BuildTime=${BUILD_TIME}"
 
 all:
+	go get ./...
 	go build  -o ${BINARY} backup_ldap.go
 
 clean:
